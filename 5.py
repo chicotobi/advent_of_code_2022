@@ -23,6 +23,7 @@ for m in moves:
     
 answer = [i[-1] for i in a]
 answer = ''.join(answer)
+print(answer)
 
 
 d = open("5.txt", "r").read().splitlines()
@@ -50,3 +51,4 @@ for m in moves:
     
 answer = [i[-1] for i in a]
 answer = ''.join(answer)
+print(answer)
