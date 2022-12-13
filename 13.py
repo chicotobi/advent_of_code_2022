@@ -1,4 +1,4 @@
-d = open("12.txt", "r").read().splitlines()
+d = open("13.txt", "r").read().splitlines()
 
 def compare(x,y):
   #print(x,y)
@@ -19,7 +19,7 @@ def compare(x,y):
     if v is not None:
       return v
   return True
-  
+
 s = 0
 l = len(d)//3+1
 for i in range(l):
@@ -33,7 +33,6 @@ for i in range(l):
   elif v:
     #print("right order")
     s += i+1
-  else:    
+  else:
     #print("not right order")
     s += 0
-  
