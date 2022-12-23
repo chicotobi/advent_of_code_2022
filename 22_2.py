@@ -21,34 +21,19 @@ for el in a:
 
   # First add direct partner
   if (i,j+1) in a:
-    if a[(i,j+1)] == 0:
       trans[(i,j,0)] = (i,j+1,0)
-    else:
-      trans[(i,j,0)] = (i,j,0)
-
   if (i,j-1) in a:
-    if a[(i,j-1)] == 0:
       trans[(i,j,2)] = (i,j-1,2)
-    else:
-      trans[(i,j,2)] = (i,j,2)
-
   if (i+1,j) in a:
-    if a[(i+1,j)] == 0:
       trans[(i,j,1)] = (i+1,j,1)
-    else:
-      trans[(i,j,1)] = (i,j,1)
-
   if (i-1,j) in a:
-    if a[(i-1,j)] == 0:
       trans[(i,j,3)] = (i-1,j,3)
-    else:
-      trans[(i,j,3)] = (i,j,3)
 
 for i in range(1,n+1):
-  trans[(1,50+i,3)] = (150+i,1,0)
+  trans[(1,50+i,3)] = (150+i,1,0)  
   trans[(150+i,1,2)] = (1,50+i,1)
 
-  trans[(1,i+100,3)] = (200,i,3)
+  trans[(1,100+i,3)] = (200,i,3)
   trans[(200,i,1)] = (1,100+i,1)
 
   trans[(i,150,0)] = (151-i,100,2)
@@ -65,25 +50,25 @@ for i in range(1,n+1):
 
   trans[(50+i,51,2)] = (101,i,1)
   trans[(101,i,3)] = (50+i,51,0)
-
+  
+for k in a.keys():
+  for o in range(4):
+    i,j,o0 = trans[k+(o,)]
+    if a[i,j] == 1:
+      trans[k+(o,)] = k+(o,)
+    
 i = 1
 j = min(j for (i,j) in a.keys() if i == 1)
 o = 0
 
-print(i,j,o)
-
+walk = []
 for el in path:
   if el=="R":
     o = (o+1)%4
-    #print(i,j,o)
   elif el=="L":
     o = (o-1)%4
-    #print(i,j,o)
   else:
     way = int(el)
     for k in range(way):
       i, j, o = trans[(i,j,o)]
-      #print(i,j,o)
-
-print(i,j,o)
 print(1000*(i)+4*(j)+o)
